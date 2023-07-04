@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Latihan membuat layout admin template</title>
+    <link rel="shortcut icon" href="gambar/header-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="blok-kiri">
+            Sistem Tokopaedi
+        </div>
+        <div class="blok-kanan">
+            <span class="margin-x-5"><i class="fa-solid fa-user" style="color: #ffffff;"></i></span>
+            <span class="margin-x-5"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></span>
+            <span class="margin-x-5"><i class="fa-solid fa-bell" style="color: #ffffff;"></i></span>
+        </div>
+    </header>
+
+    <div class="konten">
+        <!-- nav adalah menu konten -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="produk.html">Produk</a></li>
+                <li>
+                    <button class="dropdown-tombol">Report</button>
+                    <ul class="dropdown-isi">
+                        <li><a href="report/penjualan.html">Penjualan</a></li>
+                        <li><a href="report/stok.html">Stok</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        
+
+        <!-- main adalah isi konten -->
+        <main>
+            <div class="halaman-dashboard">
+                <div class="blok-dashboard bg-kuning">
+                    blok 1
+                </div>
+                <div class="blok-dashboard bg-biru">
+                    <img src="gambar/machao.jpg" width="200" alt="">
+                    <p>Skin Hero: Ma Chao</p>
+                    <p>Attack: 89</p>
+                    <p>Defense: 70</p>
+                    <p>Health: 99</p>
+                </div>
+                <div class="blok-dashboard bg-merah">
+                    blok 3
+                </div>
+                <div class="blok-dashboard bg-hijau">
+                    blok 4
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        ini footer
+    </footer>
+
+    <script>
+        /* Loop through all dropdown buttons to toggle 
+        between hiding and showing its dropdown content
+        - This allows the user to have multiple dropdowns 
+        without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-tombol");
+        
+        for (var i=0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

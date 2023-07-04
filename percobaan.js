@@ -1,4 +1,9 @@
-const http = require('http')
+const http = require('http') //memanggil modul http, fitur bawaan node.js
+
+//1. mengecek di fitur bawaan node.js
+//2. mengecek di library npmjs.com -> kalau ada di npmjs.com, itu harus install dulu, command ada di websitenya, jalankan di terminal
+//3. memanggil file lain
+
 const url = require('url')
 
 //url -> callback atau fungsi yang akan dijalankan
@@ -11,7 +16,8 @@ const url = require('url')
 http.createServer(function(request, response) {
     if(request.url == '/') {
         response.writeHead(200, {"Content-Type": "text/plain"}) //response writeHead -> setting header (isinya kode status dan tipe konten yang akan ditampilkan), untuk membuka akses
-        response.write('hello world') //response write -> isi konten yang akan diberikan/ ditampilkan ke client
+        response.write('hello world \n') //response write -> isi konten yang akan diberikan/ ditampilkan ke client
+        response.write('teks berasal dari server node.js')
         response.end() //response end -> menutup proses transfer data yang dibuka header
     }
     else if(request.url == '/hubungi-kami') {
@@ -30,3 +36,5 @@ http.createServer(function(request, response) {
 
 //pertanda kalau server sudah aktif
 console.log('server node.js sudah aktif')
+
+//npmjs.com -> tempat developer node.js berkumpul
