@@ -46,6 +46,55 @@ http.createServer(function(request, response) {
                 response.end()
             })
             break;
+        
+        case '/insert':
+            response.writeHead(200, {"Content-Type": "text/plain"})
+            koneksidb.query(
+                `INSERT INTO tabel_satu(nama, alamat)
+                VALUES('Vale', 'Land of Dawn'), ('Ixia', 'PIK'), ('Nana', 'Kebon Jeruk');`, 
+                function (error, hasil) {
+                    if (error) throw error
+
+                    if(hasil.affectedRows > 0) {
+                        response.write('Berhasil memasukkan ' + hasil.affectedRows + ' baris data ke MySQL')
+                    }
+                    response.end()
+                }
+            )
+            //jgn lupa ya krn nama dan alamat itu string, jadi pakai tanda petik ('')
+            break;
+
+        case '/update':
+            response.writeHead(200, {"Content-Type": "text/plain"})
+            koneksidb.query(
+                `UPDATE tabel_satu SET nama = 'Valentina' WHERE id = 7;`, 
+                function(error, hasil) {
+                    if (error) throw error
+
+                    if (hasil.affectedRows > 0) {
+                        response.write('Berhasil update ' + hasil.affectedRows + ' baris data')
+                    }
+                    response.end()
+                })
+            break;
+
+        case '/delete':
+            response.writeHead(200, {"Content-Type": "text/plain"})
+            koneksidb.query(
+                `DELETE FROM tabel_satu WHERE id = 8;`,
+                function(error, hasil) {
+                    if (error) throw error
+
+                    if (hasil.affectedRows > 0) {
+                        response.write('Berhasil menghapus ' + hasil.affectedRows + ' dari MySQL')
+                    } else {
+                        response.write('anda sudah hapus data tersebut')
+                    } //ini kalau udah dihapus datanya bakal ada pesan yg 'anda sudah hapus data tersebut'
+                response.end()
+                }
+            )
+
+            break;
 
         default:
             response.writeHead(404, {"Content-Type": "text/html"})
@@ -54,3 +103,4 @@ http.createServer(function(request, response) {
             break;
     }
 }).listen(port)
+//XAMPP tidak bisa untuk menjalankan node.js
